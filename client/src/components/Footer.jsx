@@ -3,7 +3,7 @@ import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <footer className="flex items-center justify-between gap-4 px-4 lg:px-44 py-3">
+    <footer className="bg-gray-300 flex items-center justify-between gap-4 px-4 lg:px-44 py-3">
       <img width={32} src={assets.logo} alt="logo" />
       <p className="flex-1 border-l border-gray-100 max-sm:hidden">
         &copy; {new Date().getFullYear()} @amosuzuagie | All rights reserved.

@@ -2,10 +2,12 @@ import logo from "./logo.png";
 import people from "./people.png";
 import people_org from "./people-org.png";
 import video from "./home-page-banner.mp4";
+import credit from "./credit.svg";
 
 export const assets = {
   logo,
   video,
+  credit,
   people,
   people_org,
 };
@@ -72,14 +74,14 @@ export const testimonials = [
     handle: "@_marphistech",
   },
   {
-    id: 1,
+    id: 2,
     quote:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     author: "John Doe",
     handle: "@_Doetech",
   },
   {
-    id: 1,
+    id: 3,
     quote:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     author: "Mariam Ibrahim",
