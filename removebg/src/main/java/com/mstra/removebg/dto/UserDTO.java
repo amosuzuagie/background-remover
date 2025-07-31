@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 public class UserDTO {
     private String clerkId;
     private String email;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private Integer credits;
     private String photoUrl;
 }

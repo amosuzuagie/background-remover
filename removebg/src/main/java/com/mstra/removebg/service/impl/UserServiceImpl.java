@@ -21,14 +21,14 @@ public class UserServiceImpl implements UserService {
         if (optionalUser.isPresent()) {
             UserEntity existingUser = optionalUser.get();
             existingUser.setEmail(userDTO.getEmail());
-            existingUser.setFirstname(userDTO.getFirstname());
-            existingUser.setLastname(userDTO.getLastname());
+            existingUser.setFirstname(userDTO.getFirstName());
+            existingUser.setLastname(userDTO.getLastName());
             existingUser.setPhotoUrl(userDTO.getPhotoUrl());
             if (userDTO.getCredits() != null) existingUser.setCredits(existingUser.getCredits());
             existingUser = userRepository.save(existingUser);
             return mapToUserDTO(existingUser);
         }
-        UserEntity savedUser = mapToUserEntity(userDTO);
+        UserEntity savedUser =  userRepository.save(mapToUserEntity(userDTO));
 
         return mapToUserDTO(savedUser);
     }
@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
         return UserDTO.builder()
                 .clerkId(savedUser.getClerkId())
                 .email(savedUser.getEmail())
-                .firstname(savedUser.getFirstname())
-                .lastname(savedUser.getLastname())
+                .firstName(savedUser.getFirstname())
+                .lastName(savedUser.getLastname())
                 .photoUrl(savedUser.getPhotoUrl())
                 .build();
     }
@@ -47,8 +47,8 @@ public class UserServiceImpl implements UserService {
         return UserEntity.builder()
                 .clerkId(userDTO.getClerkId())
                 .email(userDTO.getEmail())
-                .firstname(userDTO.getFirstname())
-                .lastname(userDTO.getLastname())
+                .firstname(userDTO.getFirstName())
+                .lastname(userDTO.getLastName())
                 .photoUrl(userDTO.getPhotoUrl())
                 .build();
     }

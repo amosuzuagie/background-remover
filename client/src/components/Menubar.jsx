@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import {
   SignedIn,
   SignedOut,
-  useAuth,
   useClerk,
   UserButton,
   useUser,
@@ -15,7 +14,6 @@ const Menubar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { openSignIn, openSignUp } = useClerk();
   const { user } = useUser();
-  const { getToken } = useAuth();
 
   const openRegister = () => {
     setMenuOpen(false);
@@ -25,12 +23,6 @@ const Menubar = () => {
   const openLogin = () => {
     setMenuOpen(false);
     openSignIn({});
-  };
-
-  const getData = async () => {
-    const token = await getToken();
-    console.log(token);
-    console.log(user.id);
   };
 
   return (
@@ -72,7 +64,6 @@ const Menubar = () => {
               Credits: 0
             </p>
           </button>
-          <button onClick={getData}>Get Data</button>
           <p className="text-gray-600 ">Hi, {user?.fullName}</p>
         </div>
         <div className="max-sm:hidden">
