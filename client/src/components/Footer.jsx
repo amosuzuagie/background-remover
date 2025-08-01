@@ -22,18 +22,27 @@ const Footer = () => {
       </div> */}
 
       <a
+        href="https://github.com/amosuzuagie"
+        target="_blank"
+        rel="noopener noreferrer"
         className="text-indigo-700 hover:text-gray-700 
             dark:hover:text-violet-400 transition-colors duration-300"
       >
         <FiGithub className="w-5 h-5" />
       </a>
       <a
+        href="https://www.linkedin.com/in/amos-uzuagie-7174731a6/"
+        target="_blank"
+        rel="noopener noreferrer"
         className="text-indigo-700 hover:text-gray-700 
             dark:hover:text-violet-400 transition-colors duration-300"
       >
         <FiLinkedin className="w-5 h-5" />
       </a>
       <a
+        href="https://x.com/amosuzuagie"
+        target="_blank"
+        rel="noopener noreferrer"
         className="text-indigo-700 hover:text-gray-700 
             dark:hover:text-violet-400 transition-colors duration-300"
       >

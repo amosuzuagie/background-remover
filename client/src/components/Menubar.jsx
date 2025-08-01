@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -9,10 +9,12 @@ import {
   UserButton,
   useUser,
 } from "@clerk/clerk-react";
+import { AppContext } from "../context/AppContext";
 
 const Menubar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { openSignIn, openSignUp } = useClerk();
+  const { credits } = useContext(AppContext);
   const { user } = useUser();
 
   const openRegister = () => {
@@ -61,7 +63,7 @@ const Menubar = () => {
           <button className="flex items-center gap-2 bg-blue-100 px-4 sm:px-5 py-1.5 sm:py-2.5 rounded-full hover:scale-105 transition-all duration-500 cursor-pointer">
             <img src={assets.credit} alt="..." height={24} width={24} />
             <p className="text-xs sm:text-sm font-medium text-gray-600">
-              Credits: 0
+              Credits: {credits}
             </p>
           </button>
           <p className="text-gray-600 ">Hi, {user?.fullName}</p>
@@ -100,7 +102,7 @@ const Menubar = () => {
               <button className="flex items-center gap-2 bg-blue-100 px-4 py-1.5 sm:py-2.5 rounded-full hover:">
                 <img src={assets.credit} alt="..." height={24} width={24} />
                 <p className="text-xs sm:text-sm font-medium text-gray-600">
-                  Credits: 0
+                  Credits: {credits}
                 </p>
               </button>
             </div>

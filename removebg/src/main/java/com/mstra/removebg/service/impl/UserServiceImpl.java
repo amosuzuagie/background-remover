@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService {
                 .email(savedUser.getEmail())
                 .firstName(savedUser.getFirstname())
                 .lastName(savedUser.getLastname())
+                .credits(savedUser.getCredits())
                 .photoUrl(savedUser.getPhotoUrl())
                 .build();
     }
