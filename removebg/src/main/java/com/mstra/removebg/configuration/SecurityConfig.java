@@ -15,6 +15,11 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import jakarta.servlet.Filter;
+import jakarta.servlet.http.HttpServletRequest;
+
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+
 import java.util.List;
 
 @Configuration
@@ -29,7 +34,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         auth -> auth
-//                                .requestMatchers("/api/users").permitAll()
+                                .requestMatchers("/api/webhooks/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(session ->
@@ -37,6 +42,20 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
+
+    @Bean
+    public FilterRegistrationBean<Filter> loggingFilter() {
+        FilterRegistrationBean<Filter> registrationBean = new FilterRegistrationBean<>();
+
+        registrationBean.setFilter((request, response, chain) -> {
+            HttpServletRequest req = (HttpServletRequest) request;
+            System.out.println("🔥 Incoming request to: " + req.getRequestURI());
+            chain.doFilter(request, response);
+        });
+        registrationBean.addUrlPatterns("/*");
+        return registrationBean;
+    }
+
 
     @Bean
     public CorsFilter corsFilter() {
