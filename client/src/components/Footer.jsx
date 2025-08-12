@@ -8,18 +8,6 @@ const Footer = () => {
       <p className="flex-1 border-l border-gray-100 max-sm:hidden">
         &copy; {new Date().getFullYear()} @amosuzuagie | All rights reserved.
       </p>
-      {/* <div className="flex gap-3">
-        {FOOTER_CONTENT.map((item) => (
-          <a href={item.url} key={item} target="_blank">
-            <img
-              src={item.logo}
-              alt="logo"
-              width={32}
-              rel="noopener noreferrer"
-            />
-          </a>
-        ))}
-      </div> */}
 
       <a
         href="https://github.com/amosuzuagie"

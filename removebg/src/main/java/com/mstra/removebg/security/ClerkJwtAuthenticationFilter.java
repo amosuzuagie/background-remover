@@ -36,15 +36,10 @@ public class ClerkJwtAuthenticationFilter extends OncePerRequestFilter {
             FilterChain filterChain
     ) throws ServletException, IOException {
         String path = request.getRequestURI();
-        if (path.startsWith("/api/webhooks/")) {
+        if (path.startsWith("/api/webhooks/") || path.equals("/api/orders/payment/verify")) {
             filterChain.doFilter(request, response); // Don't block Clerk webhooks
             return;
         }
-
-//        if (request.getRequestURI().equals("/api/webhooks/")) {
-//            filterChain.doFilter(request, response);
-//            return;
-//        }
 
         String authHeader = request.getHeader("Authorization");
 

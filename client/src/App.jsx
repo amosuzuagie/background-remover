@@ -4,6 +4,10 @@ import Menubar from "./components/Menubar";
 import Home from "./pages/Home";
 import { Toaster } from "react-hot-toast";
 import UserSyncHandler from "./components/UserSyncHandler";
+import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/clerk-react";
+import Result from "./pages/Result";
+import BuyCredits from "./pages/BuyCredits";
+import PaymentDetails from "./pages/PaymentDetails";
 
 function App() {
   return (
@@ -13,6 +17,21 @@ function App() {
       <Toaster />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/pricing" element={<BuyCredits />} />
+        <Route path="/payment_details" element={<PaymentDetails />} />
+        <Route
+          path="/result"
+          element={
+            <>
+              <SignedIn>
+                <Result />
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn />
+              </SignedOut>
+            </>
+          }
+        />
       </Routes>
       <Footer />
     </>

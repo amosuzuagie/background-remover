@@ -21,9 +21,9 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<?> createOrUpdateUser(@RequestBody UserDTO userDTO, Authentication authentication) {
-        System.out.println("Got to Controller");
-        System.out.println(userDTO);
+
         RemoveBgResponse response = null;
+
         if (!authentication.getName().equals(userDTO.getClerkId())) {
             response = RemoveBgResponse.builder()
                     .success(false)

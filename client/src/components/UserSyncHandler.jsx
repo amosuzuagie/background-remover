@@ -26,7 +26,7 @@ const UserSyncHandler = () => {
           photoUrl: user.imageUrl,
         };
 
-        console.log("User Data: ", userData);
+        // console.log("User Data: ", userData);
 
         await axios.post(backendUrl + "/users", userData, {
           headers: { Authorization: `Bearer ${token}` },

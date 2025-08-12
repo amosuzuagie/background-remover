@@ -63,7 +63,7 @@ const Menubar = () => {
           <button className="flex items-center gap-2 bg-blue-100 px-4 sm:px-5 py-1.5 sm:py-2.5 rounded-full hover:scale-105 transition-all duration-500 cursor-pointer">
             <img src={assets.credit} alt="..." height={24} width={24} />
             <p className="text-xs sm:text-sm font-medium text-gray-600">
-              Credits: {credits}
+              Credits: {credits || 0}
             </p>
           </button>
           <p className="text-gray-600 ">Hi, {user?.fullName}</p>
@@ -102,7 +102,7 @@ const Menubar = () => {
               <button className="flex items-center gap-2 bg-blue-100 px-4 py-1.5 sm:py-2.5 rounded-full hover:">
                 <img src={assets.credit} alt="..." height={24} width={24} />
                 <p className="text-xs sm:text-sm font-medium text-gray-600">
-                  Credits: {credits}
+                  Credits: {credits || 0}
                 </p>
               </button>
             </div>

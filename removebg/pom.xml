@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<spring-cloud.version>2024.0.2</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -57,11 +58,10 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.5</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>com.github.svix</groupId>-->
-<!--			<artifactId>svix-java</artifactId>-->
-<!--			<version>0.92.0</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -86,12 +86,17 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-<!--	<repositories>-->
-<!--		<repository>-->
-<!--			<id>jitpack.io</id>-->
-<!--			<url>https://jitpack.io</url>-->
-<!--		</repository>-->
-<!--	</repositories>-->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>

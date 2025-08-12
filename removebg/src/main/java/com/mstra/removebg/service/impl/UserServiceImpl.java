@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
             existingUser.setFirstname(userDTO.getFirstName());
             existingUser.setLastname(userDTO.getLastName());
             existingUser.setPhotoUrl(userDTO.getPhotoUrl());
-            if (userDTO.getCredits() != null) existingUser.setCredits(existingUser.getCredits());
+            if (userDTO.getCredits() != null) existingUser.setCredits(userDTO.getCredits());
             existingUser = userRepository.save(existingUser);
             return mapToUserDTO(existingUser);
         }
@@ -48,6 +48,11 @@ public class UserServiceImpl implements UserService {
         userRepository.delete(userEntity);
     }
 
+    public String getUserEmailByClerkId(String clerkId) {
+        return userRepository.getEmailByClerkId(clerkId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+
     private UserDTO mapToUserDTO(UserEntity savedUser) {
         return UserDTO.builder()
                 .clerkId(savedUser.getClerkId())
@@ -63,6 +68,7 @@ public class UserServiceImpl implements UserService {
         return UserEntity.builder()
                 .clerkId(userDTO.getClerkId())
                 .email(userDTO.getEmail())
+                .credits(userDTO.getCredits())
                 .firstname(userDTO.getFirstName())
                 .lastname(userDTO.getLastName())
                 .photoUrl(userDTO.getPhotoUrl())
